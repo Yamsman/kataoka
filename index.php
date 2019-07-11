@@ -1,8 +1,14 @@
 <?php
-require 'db-auth.php';
-require 'header.php';
+require_once 'db-auth.php';
+require_once 'header.php';
 
+require_once 'db/userdao.php';
 $conn = new mysqli($db_ip, $db_uname, $db_pw, $db_schema);
+
+$usr_dao = new UserDAO($conn);
+$testusr = new User(0, "Kirishima", "kirishima@gmail.com", 'foobaz');
+$usr_dao->create($testusr);
+
 $res = $conn->query("SELECT * FROM users;");
 
 for ($i = 0; $i < $res->num_rows; $i++) {
@@ -12,6 +18,7 @@ for ($i = 0; $i < $res->num_rows; $i++) {
 	echo "*    ID: " . $row["id"] . "<br>";
 	echo "*    Name: " . $row["name"] . "<br>";
 	echo "*    Email: " . $row["email"] . "<br>";
+	echo "*    Pass: " . $row["pw"] . "<br>";
 	echo "<br>";
 }
 

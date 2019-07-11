@@ -1,10 +1,10 @@
 USE kataoka;
 
 -- User data
-INSERT INTO users(name, email) VALUES ('Choukai', 'choukai@gmail.com');
-INSERT INTO users(name, email) VALUES ('Kongou', 'kongou@gmail.com');
-INSERT INTO users(name, email) VALUES ('Mutsuki', 'mutsuki@gmail.com');
-INSERT INTO users(name, email) VALUES ('Hibiki', 'hibiki@gmail.com');
+INSERT INTO users(name, email, pw) VALUES ('Choukai', 'choukai@gmail.com', 'foo');
+INSERT INTO users(name, email, pw) VALUES ('Kongou', 'kongou@gmail.com', 'bar');
+INSERT INTO users(name, email, pw) VALUES ('Mutsuki', 'mutsuki@gmail.com', 'baz');
+INSERT INTO users(name, email, pw) VALUES ('Hibiki', 'hibiki@gmail.com', 'foobar');
 
 -- Ruleset data
 INSERT INTO rulesets(name, owner_id) VALUES ('WRC Ruleset', 1);

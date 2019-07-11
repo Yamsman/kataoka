@@ -11,6 +11,7 @@ CREATE TABLE users (
 	id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(24) NOT NULL,
 	email VARCHAR(64) NOT NULL,
+	pw VARCHAR(128) NOT NULL,
 	PRIMARY KEY(id)
 );
 
@@ -59,7 +60,6 @@ CREATE TABLE players (
 	FOREIGN KEY(game_id) REFERENCES games(id)
 );
 
-
 /*
  * Hand table
  * Holds information on a single mahjong hand.
@@ -90,6 +90,7 @@ CREATE TABLE rounds (
 	action INT NOT NULL,
 	points INT,
 	hand_id INT NULL,
+	FOREIGN KEY(user_id) REFERENCES users(id),
 	FOREIGN KEY(game_id) REFERENCES games(id),
 	FOREIGN KEY(hand_id) REFERENCES hands(id)
 );
