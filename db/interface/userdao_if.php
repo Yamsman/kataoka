@@ -1,8 +1,8 @@
 <?php
 interface UserDAOInterface {
-	public function create(User $user);
-	public function update(User $user);
-	public function get_by_id($id);
-	public function get_by_name($name);
+	public static function create($conn, User &$user);
+	public static function update($conn, User $user);
+	public static function get_by_id($conn, $id);
+	public static function get_by_name($conn, $name);
 }
 ?>

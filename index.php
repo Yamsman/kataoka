@@ -5,9 +5,8 @@ require_once 'header.php';
 require_once 'db/userdao.php';
 $conn = new mysqli($db_ip, $db_uname, $db_pw, $db_schema);
 
-$usr_dao = new UserDAO($conn);
 $testusr = new User(0, "Kirishima", "kirishima@gmail.com", 'foobaz');
-$usr_dao->create($testusr);
+UserDAO::create($conn, $testusr);
 
 $res = $conn->query("SELECT * FROM users;");
 
