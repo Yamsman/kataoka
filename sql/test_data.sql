@@ -7,8 +7,33 @@ INSERT INTO users(name, email, pw) VALUES ('Mutsuki', 'mutsuki@gmail.com', 'baz'
 INSERT INTO users(name, email, pw) VALUES ('Hibiki', 'hibiki@gmail.com', 'foobar');
 
 -- Ruleset data
-INSERT INTO rulesets(name, owner_id) VALUES ('WRC Ruleset', 1);
-INSERT INTO rulesets(name, owner_id) VALUES ('Tenhou Ruleset', 2);
+INSERT INTO rulesets(name, owner_id,
+	num_players, num_rounds, start_score, target_score, 
+	uma_1, uma_2, uma_3, uma_4, 
+	renchan, multi_ron, enchousen, agariyame, 
+	akadora, atozuke, kuikae, kuitan, 
+	ryanhan, kazoe_ym, multi_ym, tobi, 
+	kandora, minkan_dora, wareme, kiriage, closed_ck, 
+	kyuushuu, suufon, suucharii, suukaikan, sanrenhou, 
+	dsg_pao, dss_pao, skt_pao, rinshan_pao, 
+	renhou, nagashi, open_riichi, paarenchan, 
+	daisharin, sanjun, yonjun, sanrenkou, suurenkou, 
+	puuta_13, puuta_14, tanki_dy, junsei_dy, 
+	sanjuumen_dy, daisuushi_dy, daichisei
+) VALUES ('Test Ruleset', 2,
+	4, 8, 25000, 30000,
+	20, 10, -10, -20,
+	2, false, true, true,
+	true, true, false, true,
+	false, true, true, true,
+	true, false, false, true, true,
+	true, true, true, true, false,
+	true, true, true, true,
+	5, true, true, false,
+	true, false, false, false, false,
+	false, false, true, true,
+	true, true, true
+);
 
 -- Game data
 INSERT INTO games(rules_id) VALUES (1);
