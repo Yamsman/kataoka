@@ -4,5 +4,6 @@ interface UserDAOInterface {
 	public static function update($conn, User $user);
 	public static function get_by_id($conn, $id);
 	public static function get_by_name($conn, $name);
+	public static function delete($conn, User $user);
 }
 ?>
