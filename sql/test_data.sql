@@ -49,7 +49,9 @@ INSERT INTO players(user_id, game_id, starting_seat, placement, score)
 	VALUES (4, 1, 1, 2, 27500);
 
 -- Hand data
--- TODO
+INSERT INTO hands(id, user_id, tiles, open, win_type, han, fu, dora,
+	riichi, ippatsu, haitei, rinshan, chankan)
+	VALUES (1, 1, "123m456m123p5s5S<789m>", true, true, 2, 30, 1, false, false, false, false, false);
 
 /* 
  * Round data for game ID 1:

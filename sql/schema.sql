@@ -5,7 +5,6 @@ USE kataoka;
 /*
  * User table
  * Holds the information for user accounts.
- * TODO: passwords
  */
 CREATE TABLE users (
 	id INT NOT NULL AUTO_INCREMENT,
@@ -27,7 +26,7 @@ CREATE TABLE users (
  * TODO: Yakitori method and value
  * TODO: Variations on akadora
  * TODO: Variations on open riichi
- *
+ * TODO: Chonbo method and value
  */
 CREATE TABLE rulesets (
 	id INT NOT NULL AUTO_INCREMENT,
@@ -129,11 +128,36 @@ CREATE TABLE players (
 /*
  * Hand table
  * Holds information on a single mahjong hand.
- * TODO: hand data
+ *
+ * The hand's tiles are stored as a single string formatted
+ * as detailed by the OpenMJ universal mahjong protocol:
+ * Tile notation:
+ *  - One numeric digit and one alphabetic letter represents one tile.
+ *  - The alphabet is m (manzu), p (pinzu), s (souzu), z (tsuupai).
+ *  - Honor tiles are in the order ton, nan, xia, pei, haku, hatsu, chun, from 1z~7z.
+ *  - Uppercase alphabet are used for akadora.
+ * Hand notation:
+ *  - Tiles in the hand are sorted. The order is m->p->s->z, 1->9.
+ *  - Self-drawn tiles are generally lined up, while open tiles are surrounded with <>. For ankan, ().
+ *  - All spaces are removed.
+ * https://ja.osdn.net/projects/openmj/wiki/UMP
+ * As an extension, abbreviations may be used, for example 1m2m3m may be represented as 123m.
  */
 CREATE TABLE hands (
 	id INT NOT NULL AUTO_INCREMENT,
-	user_id INT NOT NULL,
+	user_id INT NOT NULL,		-- User who won the hand
+	rules_id INT NOT NULL,		-- Ruleset associated with the hand
+	tiles VARCHAR(48),		-- Tile composition of the hand
+	open BIT NOT NULL,		-- Is the hand open? T/F
+	win_type BIT NOT NULL,		-- Ron or tsumo? T/F
+	han INT NOT NULL,		-- Han value; Non-kazoe yakuman are multiples of -13
+	fu INT NOT NULL,		-- Fu value; Defaults to 30 if negilible
+	dora INT NOT NULL,		-- Number of dora the hand has (including aka)
+	riichi BIT NOT NULL,		-- Did the player call riichi? T/F
+	ippatsu BIT NOT NULL,		-- Did the player win with ippatsu? T/F
+	haitei BIT NOT NULL,		-- Did the player win with haitei/houtei? T/F
+	rinshan BIT NOT NULL,		-- Did the player win by rinshan kaihou? T/F
+	chankan BIT NOT NULL,		-- Did the player win by chankan? T/F
 	PRIMARY KEY (id),
 	FOREIGN KEY(user_id) REFERENCES users(id)
 );

@@ -13,8 +13,6 @@ class RoundDAO implements RoundDAOInterface {
 		for ($i = 0; $i < count($round->actions); $i++) {
 			//Get the round action
 			$act = $round->actions[$i];
-
-			echo var_dump($act);
 			
 			//Create and execute the query
 			$query = $conn->prepare('INSERT INTO rounds 
