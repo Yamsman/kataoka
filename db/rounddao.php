@@ -24,7 +24,6 @@ class RoundDAO implements RoundDAOInterface {
 				$act->action, $act->points, $act->hand_id
 			);
 			$res = $query->execute();
-			echo $conn->error;
 			if (!$res) return false;
 
 		}
@@ -44,7 +43,8 @@ class RoundDAO implements RoundDAOInterface {
 			//Create and execute the query
 			$query = $conn->prepare('UPDATE rounds 
 				SET action = ?, points = ?, hand_id = ?
-				WHERE user_id = ?, game_id = ?, major_round = ?, minor_round = ?;');
+				WHERE user_id = ? AND game_id = ?
+				AND major_round = ? AND minor_round = ?;');
 			$query->bind_param("iiiiiii",
 				$act->action, $act->points, $act->hand_id,
 				$act->user_id, $round->game_id,
