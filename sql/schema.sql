@@ -21,11 +21,18 @@ CREATE TABLE users (
  * Each game is associated with one ruleset which places constraints
  * on what data can be entered. For example, a game played under a sanma
  * ruleset will only contain data for three players.
+ *
+ * TODO: Rule variations on atamahane
+ * TODO: Explicit value for oka
+ * TODO: Yakitori method and value
+ * TODO: Variations on akadora
+ * TODO: Variations on open riichi
+ *
  */
 CREATE TABLE rulesets (
 	id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(64),
-	owner_id INT NOT NULL,
+	owner_id INT,
 
 	-- General
 	num_players	INT NOT NULL,	-- 3 for sanma, 4 for yonma
