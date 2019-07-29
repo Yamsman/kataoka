@@ -147,6 +147,9 @@ CREATE TABLE hands (
  * Action represents a win, a loss, an abortive draw, or no action.
  * Multiple ron is possible through multiple 'play in' actions.
  * Optionally, the player's hand for the round can be stored.
+ * A set of round data is identified by a combination of the
+ * game ID, major round, and minor round. Within that set, a player's
+ * action during the round is identified by their ID.
  */
 CREATE TABLE rounds (
 	user_id INT NOT NULL,
